@@ -48,7 +48,7 @@
     color:var(--white);
     overflow:hidden;
   }
-  h1,h2,.serif{font-family:'Fraunces',Georgia,serif;font-weight:300;}
+  h1,h2,.big-year,.serif{font-family:'Fraunces',Georgia,serif;font-weight:300;}
 
   #deck{
     height:100vh;
@@ -77,9 +77,12 @@
     justify-content:flex-end;
     padding-bottom:12vh;
   }
-  #cover .mark{width:56px; margin-bottom:18px;}
-  #cover h1{font-size:clamp(48px,11vw,88px); margin:0; line-height:0.95; color:var(--white);}
-  #cover .tag{font-size:13px; letter-spacing:0.22em; color:var(--paper-deep); margin-top:10px;}
+  #cover .cover-wordmark{ width:min(80vw, 480px); height:auto; display:block; }
+  #cover .tag{font-size:13px; letter-spacing:0.22em; color:var(--paper-deep); margin-top:12px;}
+  #cover .corner-mark{
+    position:absolute; right:7vw; bottom:9vh; width:58px; height:auto;
+    filter:drop-shadow(0 2px 10px rgba(0,0,0,.4));
+  }
   .scroll-hint{
     position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
     font-size:11px; letter-spacing:0.15em; color:var(--paper-deep); opacity:.85;
@@ -126,11 +129,30 @@
     .with-image .img-col.wide img{ max-height:30vh; }
   }
 
-  .tenant-list{ list-style:none; padding:0; margin:16px 0 0 0; }
+  .tenant-list{ list-style:none; padding:0; margin:14px 0 0 0; }
   .tenant-list li{
-    display:inline-block; font-size:13px; letter-spacing:0.03em;
-    padding:5px 12px; margin:0 6px 8px 0; border:1px solid var(--ochre-deep);
-    color:var(--ink-soft); border-radius:2px;
+    display:inline-block; font-size:13px; font-weight:600; letter-spacing:0.02em;
+    padding:6px 13px; margin:0 6px 8px 0; border:1.5px solid var(--ochre-deep);
+    background:rgba(198,152,60,0.10); color:var(--ink); border-radius:2px;
+  }
+
+  /* ---- Map-dominant section (Sanborn) ---- */
+  .map-feature{
+    flex-direction:column; justify-content:flex-start; align-items:stretch;
+    padding:5vh 6vw 4vh 6vw; gap:2vh;
+  }
+  .map-feature .map-frame{
+    flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center;
+  }
+  .map-feature .map-frame img{
+    max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain;
+    box-shadow:0 6px 28px rgba(36,31,25,0.22); border-radius:1px;
+  }
+  .map-feature .map-text{ flex:0 0 auto; }
+  .map-feature .map-text h2{ font-size:clamp(20px,4vw,28px); font-weight:500; margin:2px 0 4px 0; }
+  .map-feature .caption{ margin-top:6px; }
+  @media (min-width:800px){
+    .map-feature{ padding-left:6vw; }
   }
 
   /* ---- Full-bleed image section (cover-style) ---- */
@@ -141,6 +163,11 @@
     font-size:11px; letter-spacing:0.08em; color:var(--paper-deep); opacity:.8; margin-top:10px;
   }
 
+  /* ---- Pure full-screen photo slide, no text ---- */
+  .photo-slide{
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+  }
+
   /* ---- CTA ---- */
   #cta{
     background:var(--oxblood);
@@ -148,8 +175,14 @@
     align-items:flex-start;
   }
   #cta h2{ color:var(--white); }
+  #cta .cta-mark{ width:44px; height:auto; margin-bottom:20px; }
   #cta .cwd-line{ margin-top:auto; font-size:12px; letter-spacing:0.08em; color:var(--paper-deep); }
-  #cta a{ color:var(--white); }
+  #cta .cta-button{
+    display:inline-block; margin-top:6px; padding:14px 28px;
+    background:var(--white); color:var(--oxblood); text-decoration:none;
+    font-family:'Barlow',sans-serif; font-weight:600; font-size:14px;
+    letter-spacing:0.03em; border-radius:2px;
+  }
 
   .dots{
     position:fixed; right:18px; top:50%; transform:translateY(-50%);
@@ -171,9 +204,9 @@
 <div id="deck">
 
   <section id="cover" data-i="0">
-    <img class="mark" src="mark-white.svg" alt="">
-    <h1>Ledyard</h1>
+    <img class="cover-wordmark" src="wordmark-white.svg" alt="Ledyard">
     <div class="tag">ORIGINAL. CITY. LIVING.</div>
+    <img class="corner-mark" src="mark-oxblood.svg" alt="">
     <div class="scroll-hint"><span>SCROLL</span><span class="arrow">↓</span></div>
   </section>
 
@@ -184,24 +217,35 @@
       <p class="body">Designed by architect <strong>William G. Robinson</strong>, Ledyard is a four-story yellow brick Italianate building trimmed in Ionia sandstone, standing at the corner of Ottawa &amp; Pearl for a century and a half.</p>
     </div>
     <div class="img-col">
-      <img src="ornament.jpg" alt="Cast-iron ornament photographed on the Ledyard building">
-      <div class="caption">A cast-iron ornament on the building — later traced into Ledyard's belt-course pattern.</div>
+      <img src="ornament.jpg" alt="Carved wood ornament panel between two window surrounds on the Ledyard building">
+      <div class="caption">A carved wood panel on the building — later reinterpreted as Ledyard's belt-course pattern.</div>
     </div>
   </section>
 
-  <section class="content-section dark" data-i="2">
-    <div class="eyebrow">A Building With a Name</div>
-    <h2>Built for a Grand Rapids banker</h2>
-    <div class="rule"></div>
-    <p class="body">Ledyard was built for <strong>William B. Ledyard</strong>, a Grand Rapids banker. His name has stayed on the building's cornice for 150 years.</p>
+  <section class="photo-slide" data-i="2a" style="background-image:url('photo-keystone.jpg');"></section>
+
+  <section class="content-section dark with-image" data-i="2">
+    <div class="text-col">
+      <div class="eyebrow">A Building With a Name</div>
+      <h2>Built for a Grand Rapids banker</h2>
+      <div class="rule"></div>
+      <p class="body">Ledyard was built for <strong>William B. Ledyard</strong> (1811–1890), a Grand Rapids banker and investor. His name is still cut into the building's frieze. His daughter, Euphrasia Ledyard, married his business partner Moses Vail Aldrich — together they built the Ledyard &amp; Aldrich Block in 1859, known today as the Flatiron Building on Monroe Center.</p>
+    </div>
+    <div class="img-col wide">
+      <img src="ledyard-name.jpg" alt="LEDYARD carved into the building's stone frieze">
+      <div class="caption">The name, cut into the frieze — permanent, ownership-independent.</div>
+    </div>
   </section>
 
-  <section class="content-section with-image" data-i="3">
-    <div class="text-col">
+  <section class="photo-slide" data-i="3a" style="background-image:url('photo-frieze.jpg');"></section>
+
+  <section class="content-section map-feature" data-i="3">
+    <div class="map-frame">
+      <img src="sanborn-block.jpg" alt="1870s Sanborn fire insurance map detail showing Ledyard's Block">
+    </div>
+    <div class="map-text">
       <div class="eyebrow">1870s Tenants</div>
       <h2>Named on the block</h2>
-      <div class="rule"></div>
-      <p class="body">An 1870s Sanborn fire-insurance map lists Ledyard's Block by name, with real tenants on record:</p>
       <ul class="tenant-list">
         <li>Drugs</li>
         <li>Book Bindery</li>
@@ -211,19 +255,20 @@
         <li>Fire Arms</li>
         <li>Plumber (basement)</li>
       </ul>
-    </div>
-    <div class="img-col wide">
-      <img src="sanborn-block.jpg" alt="1870s Sanborn fire insurance map detail showing Ledyard's Block">
       <div class="caption">Sanborn fire-insurance map detail, 1870s — Grand Rapids Public Library archives.</div>
     </div>
   </section>
 
-  <section class="content-section" data-i="4">
-    <div class="eyebrow">Est. 1983</div>
-    <h2>Grand Rapids' second-oldest commercial building</h2>
+  <section class="photo-slide" data-i="3b" style="background-image:url('photo-corner-elevation.jpg');"></section>
+
+  <section class="image-section" data-i="4" style="background:linear-gradient(180deg, rgba(20,15,12,.20), rgba(20,15,12,.80)), url('pediment.jpg') center/cover no-repeat;">
+    <div class="eyebrow" style="color:var(--ochre)">Est. 1983</div>
+    <h2 style="color:var(--white)">This building is listed on the National Register of Historic Places</h2>
     <div class="rule"></div>
-    <p class="body">In 1983, Ledyard was listed on the <strong>National Register of Historic Places</strong> as part of the Ledyard Block Historic District — one of the few 19th-century commercial buildings downtown still standing and still in use.</p>
+    <p class="body" style="color:var(--paper-deep)">In 1983, Grand Rapids' second-oldest commercial building became part of the Ledyard Block Historic District — one of seven buildings across a single block, certified under National Register listing #83000878. Ledyard has been in continuous use since it was built in 1874.</p>
   </section>
+
+  <section class="photo-slide" data-i="4a" style="background-image:url('photo-cornice-detail.jpg');"></section>
 
   <section class="content-section dark" data-i="5">
     <div class="eyebrow">The Original Use</div>
@@ -231,6 +276,8 @@
     <div class="rule"></div>
     <p class="body">From the beginning, Ledyard was built with retail on the ground floor and living quarters on the floors above.</p>
   </section>
+
+  <section class="photo-slide" data-i="5a" style="background-image:url('photo-storefront.jpg');"></section>
 
   <section class="image-section" data-i="6" style="background:linear-gradient(180deg, rgba(20,15,12,.25), rgba(20,15,12,.82)), url('finial-interior.jpg') center/cover no-repeat; padding-bottom:10vh;">
     <div class="eyebrow" style="color:var(--ochre)">Coming Back</div>
@@ -241,11 +288,10 @@
   </section>
 
   <section id="cta" data-i="7">
+    <img class="cta-mark" src="mark-white.svg" alt="">
     <div class="eyebrow" style="color:var(--paper-deep)">Follow the Project</div>
     <h2>125 Ottawa Ave NW<br>Grand Rapids, MI</h2>
-    <p class="body" style="color:var(--paper-deep)">
-      <a href="https://www.cwdrealestate.com/great-spaces/the-ledyard-building">cwdrealestate.com/great-spaces/the-ledyard-building</a>
-    </p>
+    <a class="cta-button" href="https://www.cwdrealestate.com/great-spaces/the-ledyard-building">Visit the Ledyard Page</a>
     <div class="cwd-line">Presented by CWD Real Estate Investment</div>
   </section>
 
