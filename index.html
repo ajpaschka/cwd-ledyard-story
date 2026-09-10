@@ -106,6 +106,41 @@
   .dark p.body{ color:var(--paper-deep); }
   .rule{ width:48px; height:2px; background:var(--ochre-deep); margin-bottom:22px; }
 
+  /* ---- Sections with a supporting image ---- */
+  .with-image{ flex-direction:row; align-items:center; gap:6vw; flex-wrap:wrap; }
+  .with-image .text-col{ flex:1 1 320px; }
+  .with-image .img-col{ flex:0 1 260px; }
+  .with-image .img-col img{
+    width:100%; height:auto; max-height:42vh; object-fit:contain;
+    display:block; margin:0 auto;
+  }
+  .with-image .img-col.wide{ flex-basis:340px; }
+  .with-image .img-col.wide img{ max-height:48vh; object-fit:cover; border-radius:2px; }
+  .caption{ font-size:11px; color:var(--ink-soft); opacity:.75; margin-top:8px; letter-spacing:0.02em; }
+  .dark .caption{ color:var(--paper-deep); }
+  @media (max-width:640px){
+    .with-image{ flex-direction:column-reverse; gap:2.5vh; justify-content:flex-start; overflow-y:auto; padding-top:6vh; padding-bottom:6vh; }
+    .with-image .img-col{ flex-basis:auto; width:100%; max-width:190px; }
+    .with-image .img-col img{ max-height:26vh; }
+    .with-image .img-col.wide{ max-width:78vw; }
+    .with-image .img-col.wide img{ max-height:30vh; }
+  }
+
+  .tenant-list{ list-style:none; padding:0; margin:16px 0 0 0; }
+  .tenant-list li{
+    display:inline-block; font-size:13px; letter-spacing:0.03em;
+    padding:5px 12px; margin:0 6px 8px 0; border:1px solid var(--ochre-deep);
+    color:var(--ink-soft); border-radius:2px;
+  }
+
+  /* ---- Full-bleed image section (cover-style) ---- */
+  .image-section{
+    justify-content:flex-end;
+  }
+  .image-section .caption-line{
+    font-size:11px; letter-spacing:0.08em; color:var(--paper-deep); opacity:.8; margin-top:10px;
+  }
+
   /* ---- CTA ---- */
   #cta{
     background:var(--oxblood);
@@ -142,10 +177,16 @@
     <div class="scroll-hint"><span>SCROLL</span><span class="arrow">↓</span></div>
   </section>
 
-  <section class="content-section" data-i="1">
-    <div class="eyebrow">Grand Rapids, 1874</div>
-    <div class="big-year">1874</div>
-    <p class="body">Designed by architect <strong>William G. Robinson</strong>, Ledyard is a four-story yellow brick Italianate building trimmed in Ionia sandstone, standing at the corner of Ottawa &amp; Pearl for a century and a half.</p>
+  <section class="content-section with-image" data-i="1">
+    <div class="text-col">
+      <div class="eyebrow">Grand Rapids, 1874</div>
+      <div class="big-year">1874</div>
+      <p class="body">Designed by architect <strong>William G. Robinson</strong>, Ledyard is a four-story yellow brick Italianate building trimmed in Ionia sandstone, standing at the corner of Ottawa &amp; Pearl for a century and a half.</p>
+    </div>
+    <div class="img-col">
+      <img src="ornament.jpg" alt="Cast-iron ornament photographed on the Ledyard building">
+      <div class="caption">A cast-iron ornament on the building — later traced into Ledyard's belt-course pattern.</div>
+    </div>
   </section>
 
   <section class="content-section dark" data-i="2">
@@ -155,28 +196,51 @@
     <p class="body">Ledyard was built for <strong>William B. Ledyard</strong>, a Grand Rapids banker. His name has stayed on the building's cornice for 150 years.</p>
   </section>
 
-  <section class="content-section" data-i="3">
+  <section class="content-section with-image" data-i="3">
+    <div class="text-col">
+      <div class="eyebrow">1870s Tenants</div>
+      <h2>Named on the block</h2>
+      <div class="rule"></div>
+      <p class="body">An 1870s Sanborn fire-insurance map lists Ledyard's Block by name, with real tenants on record:</p>
+      <ul class="tenant-list">
+        <li>Drugs</li>
+        <li>Book Bindery</li>
+        <li>Business College</li>
+        <li>Temperance Coffee Room</li>
+        <li>Sewing Machines</li>
+        <li>Fire Arms</li>
+        <li>Plumber (basement)</li>
+      </ul>
+    </div>
+    <div class="img-col wide">
+      <img src="sanborn-block.jpg" alt="1870s Sanborn fire insurance map detail showing Ledyard's Block">
+      <div class="caption">Sanborn fire-insurance map detail, 1870s — Grand Rapids Public Library archives.</div>
+    </div>
+  </section>
+
+  <section class="content-section" data-i="4">
     <div class="eyebrow">Est. 1983</div>
     <h2>Grand Rapids' second-oldest working building</h2>
     <div class="rule"></div>
     <p class="body">In 1983, Ledyard was listed on the <strong>National Register of Historic Places</strong> as part of the Ledyard Block Historic District — one of the few 19th-century commercial buildings downtown still standing and still in use.</p>
   </section>
 
-  <section class="content-section dark" data-i="4">
+  <section class="content-section dark" data-i="5">
     <div class="eyebrow">The Original Use</div>
     <h2>Shops below, living quarters above</h2>
     <div class="rule"></div>
     <p class="body">From the beginning, Ledyard was built with retail on the ground floor and living quarters on the floors above.</p>
   </section>
 
-  <section class="content-section" data-i="5">
-    <div class="eyebrow">Coming Back</div>
-    <h2>Returning to its original purpose</h2>
+  <section class="image-section" data-i="6" style="background:linear-gradient(180deg, rgba(20,15,12,.25), rgba(20,15,12,.82)), url('finial-interior.jpg') center/cover no-repeat; padding-bottom:10vh;">
+    <div class="eyebrow" style="color:var(--ochre)">Coming Back</div>
+    <h2 style="color:var(--white)">Returning to its original purpose</h2>
     <div class="rule"></div>
-    <p class="body">After 150 years, that original use is coming back. CWD Real Estate Investment is bringing residential living back to Ledyard's upper floors — the same way the building has always worked.</p>
+    <p class="body" style="color:var(--paper-deep)">After 150 years, that original use is coming back. CWD Real Estate Investment is bringing residential living back to Ledyard's upper floors — the same way the building has always worked.</p>
+    <div class="caption-line">Concept rendering — the Ledyard mark, imagined as a cast object in the building's own interior.</div>
   </section>
 
-  <section id="cta" data-i="6">
+  <section id="cta" data-i="7">
     <div class="eyebrow" style="color:var(--paper-deep)">Follow the Project</div>
     <h2>125 Ottawa Ave NW<br>Grand Rapids, MI</h2>
     <p class="body" style="color:var(--paper-deep)">
