@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ledyard — the 1874 Ledyard Block in downtown Grand Rapids. Built for a banker, designed by architect William G. Robinson, listed on the National Register of Historic Places. Its original use — shops below, living above — is coming back.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://ajpaschka.github.io/cwd-ledyard-story/">
+<meta name="theme-color" content="#6E2B2F">
+<title>Ledyard — Original. City. Living.</title>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CWD Real Estate Investment">
+<meta property="og:url" content="https://ajpaschka.github.io/cwd-ledyard-story/">
+<meta property="og:title" content="Ledyard — Original. City. Living.">
+<meta property="og:description" content="The 1874 Ledyard Block in downtown Grand Rapids — built for a banker, designed by architect William G. Robinson, listed on the National Register of Historic Places. Its original use is coming back.">
+<meta property="og:image" content="https://ajpaschka.github.io/cwd-ledyard-story/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ledyard — the 1874 Ledyard Block, Grand Rapids">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ledyard — Original. City. Living.">
+<meta name="twitter:description" content="The 1874 Ledyard Block in downtown Grand Rapids — built for a banker, designed by architect William G. Robinson, listed on the National Register of Historic Places.">
+<meta name="twitter:image" content="https://ajpaschka.github.io/cwd-ledyard-story/og-image.png">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Barlow:wght@400;500;600&display=swap');
+
+  :root{
+    --oxblood:#6E2B2F;
+    --oxblood-deep:#4E1D20;
+    --ochre:#C6983C;
+    --ochre-deep:#9C7628;
+    --ink:#241F19;
+    --ink-soft:#514E43;
+    --paper:#EFE7D5;
+    --paper-deep:#E4D3B4;
+    --white:#FBF4E6;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    font-family:'Barlow',Helvetica,Arial,sans-serif;
+    background:var(--ink);
+    color:var(--white);
+    overflow:hidden;
+  }
+  h1,h2,.serif{font-family:'Fraunces',Georgia,serif;font-weight:300;}
+
+  #deck{
+    height:100vh;
+    height:100dvh;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+  }
+  section{
+    height:100vh;
+    height:100dvh;
+    width:100%;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:8vh 8vw;
+  }
+
+  /* ---- Cover ---- */
+  #cover{
+    background:linear-gradient(180deg, rgba(20,15,12,.55), rgba(20,15,12,.75)), url('ledyard-hero.jpg') center 30%/cover no-repeat;
+    justify-content:flex-end;
+    padding-bottom:12vh;
+  }
+  #cover .mark{width:56px; margin-bottom:18px;}
+  #cover h1{font-size:clamp(48px,11vw,88px); margin:0; line-height:0.95; color:var(--white);}
+  #cover .tag{font-size:13px; letter-spacing:0.22em; color:var(--paper-deep); margin-top:10px;}
+  .scroll-hint{
+    position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
+    font-size:11px; letter-spacing:0.15em; color:var(--paper-deep); opacity:.85;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .scroll-hint .arrow{animation:bob 1.6s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+  /* ---- Content sections ---- */
+  .content-section{ background:var(--paper); color:var(--ink); }
+  .content-section.dark{ background:var(--ink); color:var(--paper); }
+  .eyebrow{
+    font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--oxblood); font-weight:600; margin-bottom:14px;
+  }
+  .dark .eyebrow{ color:var(--ochre); }
+  .big-year{
+    font-size:clamp(72px,20vw,180px); line-height:0.85; color:var(--oxblood);
+    margin:0 0 6px 0;
+  }
+  h2{ font-size:clamp(26px,6vw,42px); margin:0 0 20px 0; color:var(--oxblood); max-width:14ch; }
+  .dark h2{ color:var(--paper); }
+  p.body{ font-size:clamp(16px,2.6vw,20px); line-height:1.55; max-width:38ch; color:var(--ink-soft); }
+  .dark p.body{ color:var(--paper-deep); }
+  .rule{ width:48px; height:2px; background:var(--ochre-deep); margin-bottom:22px; }
+
+  /* ---- CTA ---- */
+  #cta{
+    background:var(--oxblood);
+    color:var(--white);
+    align-items:flex-start;
+  }
+  #cta h2{ color:var(--white); }
+  #cta .cwd-line{ margin-top:auto; font-size:12px; letter-spacing:0.08em; color:var(--paper-deep); }
+  #cta a{ color:var(--white); }
+
+  .dots{
+    position:fixed; right:18px; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; gap:10px; z-index:10;
+  }
+  .dots button{
+    width:8px; height:8px; border-radius:50%; border:1px solid var(--paper-deep);
+    background:transparent; padding:0; cursor:pointer; opacity:.6;
+  }
+  .dots button.active{ background:var(--ochre); border-color:var(--ochre); opacity:1; }
+
+  @media (min-width:800px){
+    section{ padding-left:12vw; }
+  }
+</style>
+</head>
+<body>
+
+<div id="deck">
+
+  <section id="cover" data-i="0">
+    <img class="mark" src="mark-white.svg" alt="">
+    <h1>Ledyard</h1>
+    <div class="tag">ORIGINAL. CITY. LIVING.</div>
+    <div class="scroll-hint"><span>SCROLL</span><span class="arrow">↓</span></div>
+  </section>
+
+  <section class="content-section" data-i="1">
+    <div class="eyebrow">Grand Rapids, 1874</div>
+    <div class="big-year">1874</div>
+    <p class="body">Designed by architect <strong>William G. Robinson</strong>, Ledyard is a four-story yellow brick Italianate building trimmed in Ionia sandstone, standing at the corner of Ottawa &amp; Pearl for a century and a half.</p>
+  </section>
+
+  <section class="content-section dark" data-i="2">
+    <div class="eyebrow">A Building With a Name</div>
+    <h2>Built for a Grand Rapids banker</h2>
+    <div class="rule"></div>
+    <p class="body">Ledyard was built for <strong>William B. Ledyard</strong>, a Grand Rapids banker. His name has stayed on the building's cornice for 150 years.</p>
+  </section>
+
+  <section class="content-section" data-i="3">
+    <div class="eyebrow">Est. 1983</div>
+    <h2>Grand Rapids' second-oldest working building</h2>
+    <div class="rule"></div>
+    <p class="body">In 1983, Ledyard was listed on the <strong>National Register of Historic Places</strong> as part of the Ledyard Block Historic District — one of the few 19th-century commercial buildings downtown still standing and still in use.</p>
+  </section>
+
+  <section class="content-section dark" data-i="4">
+    <div class="eyebrow">The Original Use</div>
+    <h2>Shops below, living quarters above</h2>
+    <div class="rule"></div>
+    <p class="body">From the beginning, Ledyard was built with retail on the ground floor and living quarters on the floors above.</p>
+  </section>
+
+  <section class="content-section" data-i="5">
+    <div class="eyebrow">Coming Back</div>
+    <h2>Returning to its original purpose</h2>
+    <div class="rule"></div>
+    <p class="body">After 150 years, that original use is coming back. CWD Real Estate Investment is bringing residential living back to Ledyard's upper floors — the same way the building has always worked.</p>
+  </section>
+
+  <section id="cta" data-i="6">
+    <div class="eyebrow" style="color:var(--paper-deep)">Follow the Project</div>
+    <h2>125 Ottawa Ave NW<br>Grand Rapids, MI</h2>
+    <p class="body" style="color:var(--paper-deep)">
+      <a href="https://www.cwdrealestate.com/great-spaces/the-ledyard-building">cwdrealestate.com/great-spaces/the-ledyard-building</a>
+    </p>
+    <div class="cwd-line">Presented by CWD Real Estate Investment</div>
+  </section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const sections = Array.from(document.querySelectorAll('#deck > section'));
+  const dotsEl = document.getElementById('dots');
+  sections.forEach((s, i) => {
+    const b = document.createElement('button');
+    if (i === 0) b.classList.add('active');
+    b.addEventListener('click', () => s.scrollIntoView({behavior:'smooth'}));
+    dotsEl.appendChild(b);
+  });
+  const dotButtons = Array.from(dotsEl.children);
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const i = sections.indexOf(e.target);
+        dotButtons.forEach((b, bi) => b.classList.toggle('active', bi === i));
+      }
+    });
+  }, { root: deck, threshold: 0.6 });
+  sections.forEach(s => io.observe(s));
+
+  // keyboard nav
+  document.addEventListener('keydown', (e) => {
+    const current = sections.findIndex(s => dotButtons[sections.indexOf(s)].classList.contains('active'));
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      const next = sections[Math.min(current+1, sections.length-1)];
+      next.scrollIntoView({behavior:'smooth'});
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      const prev = sections[Math.max(current-1, 0)];
+      prev.scrollIntoView({behavior:'smooth'});
+    }
+  });
+</script>
+
+</body>
+</html>
