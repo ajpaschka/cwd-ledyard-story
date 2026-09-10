@@ -26,7 +26,7 @@
 <meta name="twitter:image" content="https://ajpaschka.github.io/cwd-ledyard-story/og-image.png">
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Barlow:wght@400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700&family=Barlow:wght@400;500;600&display=swap');
 
   :root{
     --oxblood:#6E2B2F;
@@ -101,7 +101,7 @@
   .dark .eyebrow{ color:var(--ochre); }
   .big-year{
     font-size:clamp(72px,20vw,180px); line-height:0.85; color:var(--oxblood);
-    margin:0 0 6px 0;
+    margin:0 0 6px 0; font-weight:700;
   }
   h2{ font-size:clamp(26px,6vw,42px); margin:0 0 20px 0; color:var(--oxblood); max-width:14ch; }
   .dark h2{ color:var(--paper); }
@@ -119,6 +119,7 @@
   }
   .with-image .img-col.wide{ flex-basis:340px; }
   .with-image .img-col.wide img{ max-height:48vh; object-fit:cover; border-radius:2px; }
+  .with-image .img-col.portrait img{ object-fit:contain; border-radius:0; }
   .caption{ font-size:11px; color:var(--ink-soft); opacity:.75; margin-top:8px; letter-spacing:0.02em; }
   .dark .caption{ color:var(--paper-deep); }
   @media (max-width:640px){
@@ -134,6 +135,9 @@
     display:inline-block; font-size:13px; font-weight:600; letter-spacing:0.02em;
     padding:6px 13px; margin:0 6px 8px 0; border:1.5px solid var(--ochre-deep);
     background:rgba(198,152,60,0.10); color:var(--ink); border-radius:2px;
+  }
+  .image-section .tenant-list li{
+    border-color:var(--ochre); background:rgba(198,152,60,0.18); color:var(--paper);
   }
 
   /* ---- Map-dominant section (Sanborn) ---- */
@@ -171,15 +175,16 @@
   /* ---- CTA ---- */
   #cta{
     background:var(--oxblood);
-    color:var(--white);
-    align-items:flex-start;
+    color:var(--paper);
+    align-items:center;
+    text-align:center;
   }
-  #cta h2{ color:var(--white); }
-  #cta .cta-mark{ width:44px; height:auto; margin-bottom:20px; }
-  #cta .cwd-line{ margin-top:auto; font-size:12px; letter-spacing:0.08em; color:var(--paper-deep); }
+  #cta h2{ color:var(--paper); max-width:none; }
+  #cta .cta-mark{ width:130px; height:auto; margin-bottom:26px; }
+  #cta .cwd-line{ margin-top:22px; font-size:12px; letter-spacing:0.08em; color:var(--paper-deep); }
   #cta .cta-button{
     display:inline-block; margin-top:6px; padding:14px 28px;
-    background:var(--white); color:var(--oxblood); text-decoration:none;
+    background:var(--paper); color:var(--oxblood); text-decoration:none;
     font-family:'Barlow',sans-serif; font-weight:600; font-size:14px;
     letter-spacing:0.03em; border-radius:2px;
   }
@@ -196,6 +201,7 @@
 
   @media (min-width:800px){
     section{ padding-left:12vw; }
+    #cta{ padding-left:8vw; }
   }
 </style>
 </head>
@@ -204,79 +210,69 @@
 <div id="deck">
 
   <section id="cover" data-i="0">
-    <img class="cover-wordmark" src="wordmark-white.svg" alt="Ledyard">
+    <img class="cover-wordmark" src="wordmark-ochre.svg" alt="Ledyard">
     <div class="tag">ORIGINAL. CITY. LIVING.</div>
     <img class="corner-mark" src="mark-oxblood.svg" alt="">
     <div class="scroll-hint"><span>SCROLL</span><span class="arrow">↓</span></div>
   </section>
 
+  <section class="photo-slide" data-i="1a" style="background-image:url('hist-merrill-cabinet.jpg');"></section>
+
   <section class="content-section with-image" data-i="1">
     <div class="text-col">
-      <div class="eyebrow">Grand Rapids, 1874</div>
+      <div class="eyebrow">Grand Rapids</div>
       <div class="big-year">1874</div>
       <p class="body">Designed by architect <strong>William G. Robinson</strong>, Ledyard is a four-story yellow brick Italianate building trimmed in Ionia sandstone, standing at the corner of Ottawa &amp; Pearl for a century and a half.</p>
     </div>
     <div class="img-col">
-      <img src="ornament.jpg" alt="Carved wood ornament panel between two window surrounds on the Ledyard building">
-      <div class="caption">A carved wood panel on the building — later reinterpreted as Ledyard's belt-course pattern.</div>
+      <img src="pediment.jpg" alt="The carved cornice and rosette medallion at the top of the Ledyard building's corner bay">
+      <div class="caption">The cornice and rosette medallion at the building's crown, present day.</div>
     </div>
   </section>
 
-  <section class="photo-slide" data-i="2a" style="background-image:url('hist-merrill-cabinet.jpg');"></section>
+  <section class="content-section with-image" data-i="2">
+    <div class="text-col">
+      <div class="eyebrow">A Building With a Name</div>
+      <h2>Built for a Grand Rapids banker</h2>
+      <div class="rule"></div>
+      <p class="body">Ledyard was built for <strong>William B. Ledyard</strong> (1811–1890), a Grand Rapids banker and investor. His name is still cut into the building's frieze.</p>
+    </div>
+    <div class="img-col wide portrait">
+      <img src="hist-portrait-ledyard.jpg" alt="William B. Ledyard, studio portrait">
+      <div class="caption">William B. Ledyard — studio portrait, Wykes, Grand Rapids.</div>
+    </div>
+  </section>
 
-  <section class="image-section" data-i="2" style="background:linear-gradient(100deg, rgba(20,15,12,.88) 40%, rgba(20,15,12,.35)), url('hist-portrait-ledyard.jpg') center top/cover no-repeat;">
-    <div class="eyebrow" style="color:var(--ochre)">A Building With a Name</div>
-    <h2 style="color:var(--white)">Built for a Grand Rapids banker</h2>
+  <section class="image-section" data-i="2b" style="background:linear-gradient(180deg, rgba(20,15,12,.15), rgba(20,15,12,.82)), url('hist-banknote.jpg') center/cover no-repeat;">
+    <div class="eyebrow" style="color:var(--ochre)">Dec. 5, 1862</div>
+    <h2 style="color:var(--paper)">His name, twelve years before the building</h2>
     <div class="rule"></div>
-    <p class="body" style="color:var(--paper-deep)">Ledyard was built for <strong>William B. Ledyard</strong> (1811–1890), a Grand Rapids banker and investor. His name is still cut into the building's frieze. His daughter, Euphrasia Ledyard, married his business partner Moses Vail Aldrich — together they built the Ledyard &amp; Aldrich Block in 1859, known today as the Flatiron Building on Monroe Center.</p>
-    <div class="caption-line">William B. Ledyard — studio portrait, Wykes, Grand Rapids.</div>
-  </section>
-
-  <section class="content-section map-feature" data-i="2b">
-    <div class="map-frame">
-      <img src="hist-banknote.jpg" alt="A five-cent note issued by Ledyard and Fralick, Bankers, 1862">
-    </div>
-    <div class="map-text">
-      <div class="eyebrow">Dec. 5, 1862</div>
-      <h2>His name, twelve years before the building</h2>
-      <p class="body">A five-cent note issued by <strong>Ledyard &amp; Fralick, Bankers</strong> — signed more than a decade before the Ledyard Block existed, and payable to bearer "when presented in sums of even dollars."</p>
-    </div>
+    <p class="body" style="color:var(--paper-deep)">A five-cent note issued by <strong>Ledyard &amp; Fralick, Bankers</strong> — signed more than a decade before the Ledyard Block existed, and payable to bearer "when presented in sums of even dollars."</p>
   </section>
 
   <section class="photo-slide" data-i="3a" style="background-image:url('hist-ledyard-block-postcard.jpg');"></section>
 
-  <section class="content-section map-feature" data-i="3">
-    <div class="map-frame">
-      <img src="sanborn-block.jpg" alt="1870s Sanborn fire insurance map detail showing Ledyard's Block">
-    </div>
-    <div class="map-text">
-      <div class="eyebrow">1870s Tenants</div>
-      <h2>Named on the block</h2>
-      <ul class="tenant-list">
-        <li>Drugs</li>
-        <li>Book Bindery</li>
-        <li>Grand Rapids Business College</li>
-        <li>Temperance Coffee Room</li>
-        <li>Sewing Machines</li>
-        <li>Fire Arms</li>
-        <li>Plumber (basement)</li>
-      </ul>
-      <div class="caption">Sanborn fire-insurance map detail, 1870s — Grand Rapids Public Library archives.</div>
-    </div>
-  </section>
-
-  <section class="content-section dark" data-i="2c">
-    <div class="eyebrow">Who Was "Drugs"</div>
-    <h2>Hazeltine &amp; Perkins Drug Co.</h2>
+  <section class="image-section" data-i="3" style="background:linear-gradient(180deg, rgba(20,15,12,.30), rgba(20,15,12,.86)), url('sanborn-block.jpg') center/cover no-repeat;">
+    <div class="eyebrow" style="color:var(--ochre)">1870s Tenants</div>
+    <h2 style="color:var(--paper)">Named on the block</h2>
     <div class="rule"></div>
-    <p class="body">The storefront signage in the earliest surviving photo reads "...&amp; Hazeltine, Druggists" — most likely <strong>Hazeltine &amp; Perkins Drug Co.</strong>, a real Grand Rapids wholesale drug company that operated from at least the 1880s into the 1910s, selling its own private-label remedies (cough cures, bitters, petroleum jelly) alongside standard pharmacy stock. Surviving medicine bottles still carry the name today.</p>
+    <ul class="tenant-list">
+      <li>Drugs</li>
+      <li>Book Bindery</li>
+      <li>Grand Rapids Business College</li>
+      <li>Temperance Coffee Room</li>
+      <li>Sewing Machines</li>
+      <li>Fire Arms</li>
+      <li>Plumber (basement)</li>
+    </ul>
+    <div class="caption-line">Sanborn fire-insurance map detail, 1870s — Grand Rapids Public Library archives.</div>
   </section>
 
-  <section class="photo-slide" data-i="3b" style="background-image:url('hist-streetcar-era.jpg');"></section>
+  <section class="photo-slide" data-i="3b" style="background-image:url('hist-streetcar-era.jpg'); background-size:250%; background-position:100% 100%;"></section>
 
-  <section class="image-section" data-i="4" style="background:linear-gradient(180deg, rgba(20,15,12,.20), rgba(20,15,12,.80)), url('hist-bixby-leasing.jpg') center/cover no-repeat;">
+  <section class="image-section" data-i="4" style="background:linear-gradient(180deg, rgba(20,15,12,.20), rgba(20,15,12,.80)), url('hist-bixby-leasing.jpg') center 78%/135% no-repeat;">
     <div class="eyebrow" style="color:var(--ochre)">Est. 1983</div>
-    <h2 style="color:var(--white)">This building is listed on the National Register of Historic Places</h2>
+    <h2 style="color:var(--paper)">This building is listed on the National Register of Historic Places</h2>
     <div class="rule"></div>
     <p class="body" style="color:var(--paper-deep)">In 1983, Grand Rapids' second-oldest commercial building became part of the Ledyard Block Historic District — one of seven buildings across a single block, certified under National Register listing #83000878. Ledyard has been in continuous use since it was built in 1874.</p>
   </section>
@@ -296,15 +292,15 @@
 
   <section class="image-section" data-i="6" style="background:linear-gradient(180deg, rgba(20,15,12,.25), rgba(20,15,12,.82)), url('finial-interior.jpg') center/cover no-repeat; padding-bottom:10vh;">
     <div class="eyebrow" style="color:var(--ochre)">Coming Back</div>
-    <h2 style="color:var(--white)">Returning to its original purpose</h2>
+    <h2 style="color:var(--paper)">Returning to its original purpose</h2>
     <div class="rule"></div>
     <p class="body" style="color:var(--paper-deep)">After 150 years, that original use is coming back. CWD Real Estate Investment is bringing residential living back to Ledyard's upper floors — the same way the building has always worked.</p>
     <div class="caption-line">Concept rendering — the Ledyard mark, imagined as a cast object in the building's own interior.</div>
   </section>
 
   <section id="cta" data-i="7">
-    <img class="cta-mark" src="mark-white.svg" alt="">
-    <div class="eyebrow" style="color:var(--paper-deep)">Follow the Project</div>
+    <img class="cta-mark" src="finial-paper.svg" alt="">
+    <div class="eyebrow" style="color:var(--ochre)">Follow the Project</div>
     <h2>125 Ottawa Ave NW<br>Grand Rapids, MI</h2>
     <a class="cta-button" href="https://www.cwdrealestate.com/great-spaces/the-ledyard-building">Visit the Ledyard Page</a>
     <div class="cwd-line">Presented by CWD Real Estate Investment</div>
